@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 h2   {
   color: #F6F6F6;
   background-color: #1D585E;
