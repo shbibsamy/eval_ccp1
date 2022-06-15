@@ -3,6 +3,7 @@
     <h2>
     Bienvenue sur l’interface de gestion des utilisateurs
     </h2>
+    <img src="@/assets/generic-users.jpg" alt="generic users">
   </div>
 </template>
 
@@ -19,6 +20,14 @@ h2   {
   background-color: #1D585E;
   padding: 1rem;
   border-radius: 1rem;
-  margin: 5%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 50%;
+}
+img {
+  margin: 2%;
+  max-width: 90%;
+
 }
 </style>

@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    database: [],
+    database: [], //this is my database
     simpleList: ["name", "username", "email", "address", "phone", "website", "company"],
     objectStructure: [],
     idCounter: 10,

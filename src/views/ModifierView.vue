@@ -3,7 +3,10 @@
     <form action="" id="modifier_utilisateur">
       <label v-for="(index, titre) in this.utilisateurObj" :key="titre" v-bind:for="titre">
         <h3>{{ titre }}</h3>
-        <div v-if="titre==='address'">    
+        <div v-if="titre==='id'">    
+          <input type="text" name="" v-bind:id="titre" disabled v-bind:value="index">
+        </div>
+        <div v-else-if="titre==='address'">    
           <textarea name="" v-bind:id="titre"></textarea>
         </div>
         <div v-else-if="titre==='company'">    
@@ -86,9 +89,16 @@ export default {
 <style scoped>
 .modifier {
   color: black;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 textarea {
   height: 4rem;
+}
+
+input {
+  text-align: center;
+  min-width: 360px;
 }
 </style>
