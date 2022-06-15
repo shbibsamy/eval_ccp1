@@ -1,5 +1,9 @@
 <template>
   <div class="modifier">
+    <div class="title-box">
+    <h2>Modifier l'utilisateur</h2>
+    <h3 id="username_titre">{{ utilisateurObj.name }} </h3>
+    </div>
     <form action="" id="modifier_utilisateur">
       <label v-for="(index, titre) in this.utilisateurObj" :key="titre" v-bind:for="titre">
         <h3>{{ titre }}</h3>
@@ -87,6 +91,39 @@ export default {
 </script>
 
 <style scoped>
+.title-box {
+  background-color: #1D585E;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 70%;
+  margin: auto;
+  max-width: 360px;
+}
+
+h2 {
+  color: #F6F6F6;
+  background-color: #1D585E;
+  margin: auto;
+  border-radius: 0;
+  margin: auto;
+  width: 100%;
+  max-width: 360px;
+  padding: 0;
+}
+
+h3 {
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+#username_titre {
+  background-color: #FBC522;
+  height: 50%;
+  border-radius: 10px;
+  max-width: 200px;
+  margin: auto;
+  margin-top: 1rem;
+}
 .modifier {
   color: black;
   margin-top: 1rem;
@@ -94,11 +131,19 @@ export default {
 }
 
 textarea {
-  height: 4rem;
+  height: 5rem;
+  min-width: 340px;
 }
 
-input {
+input[type=text] {
   text-align: center;
-  min-width: 360px;
+  min-width: 340px;
+}
+
+#modifier {
+  min-width: 160px;
+  background-color: #2c3e50;
+  color: #F6F6F6;
+  padding: 0.5rem;
 }
 </style>
