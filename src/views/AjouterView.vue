@@ -1,6 +1,6 @@
 <template>
   <div class="ajouter">
-    <h2>Ajouter</h2>
+    <h2>Ajouter un utilisateur</h2>
     <form action="" id="new_utilisateur">
       <label v-for="titre in this.$store.state.objectStructure"  v-bind:for="titre">
         <div v-if="this.$store.state.simpleList.includes(titre)">
@@ -82,29 +82,28 @@ export default {
 
 <style scoped>
 
-h2 {
-  color: black;
-  margin: 1rem;
-}
-
 h3 {
-  color: black;
-}
-.ajouter {
-  display:flex;
-  flex-direction: column;
-  width:  80%;
-  margin: auto;
+  text-transform: uppercase;
+  margin-top: 1rem;
 }
 
-input {
-  width: 70%;
-  margin: auto;
+.ajouter {
+  color: black;
+  margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-textarea {
-  height: 4rem;
+#ajouter {
+  max-width: 360px;
 }
 
+textarea {
+  height: 5rem;
+  min-width: 340px;
+}
+
+input[type=text]{
+  text-align: center;
+  min-width: 340px;
+}
 </style>
