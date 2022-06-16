@@ -1,7 +1,7 @@
 <template>
   <div class="utilisateurs">
     <h2>Liste des utilisateurs</h2>
-    <div class="mobile" v-for="(utilisateur, index) in this.$store.state.database" :key="index" v-bind:id="index">
+    <div class="mobile" v-for="(utilisateur, index) in this.$store.state.database" :key="index" v-bind:id="index" v-bind:class="colour(utilisateur, index)">
       <div v-for="(value, prop) in utilisateur" :key="prop">
         <div v-if="this.$store.state.simpleList.includes(prop)">
           <h3>
@@ -19,7 +19,7 @@
         </div>
       </div>
       <input type="button" value="supprimer" @click="afficherModal(utilisateur.id, utilisateur.username)" class="supprimer">
-      <input type="button" value="modifier" @click="goModifier(index, utilisateur)">
+      <input type="button" value="modifier" @click="goModifier(utilisateur)">
       <Teleport to="body">
         <modal :show="showModal" :userId="activeUserId" :userName="activeUserName" @show="showModal = false">
         </modal>
@@ -38,7 +38,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(utilisateur, index) in this.$store.state.database" :key="index" v-bind:class="colour()">
+        <tr v-for="(utilisateur, index) in this.$store.state.database" :key="index" v-bind:class="[ colour(utilisateur, index), `row${utilisateur.id}` ]">
           <td v-for="(value, prop) in utilisateur" :key="prop">
             <span v-if="prop == 'address'">
               {{ value.city }}
@@ -52,7 +52,7 @@
           </td>
           <td>
             <input type="button" value="supprimer" @click="afficherModal(utilisateur.id, utilisateur.username)" class="supprimer">
-            <input type="button" value="modifier" @click="goModifier(index, utilisateur)">
+            <input type="button" value="modifier" @click="goModifier(utilisateur)">
             <Teleport to="body">
               <modal :show="showModal" :userId="activeUserId" :userName="activeUserName" @show="showModal = false">
               </modal>
@@ -71,7 +71,6 @@ export default {
   name: 'UtilisateursView',
   data: function() {
     return {
-      colourChoice: false,
       showModal: false,
       activeUserId: 0,
       activeUserName: "",
@@ -86,17 +85,27 @@ export default {
       this.activeUserName = usernameUser;
       this.showModal = true;
     },
-    colour() {
-      this.colourChoice = !this.colourChoice
-      if (this.colourChoice) {
+    colour(utilisateur, index) {
+      if (utilisateur.name !=="") {
+        if (index %2 === 0) {
         return "green"
+        }
+        else {
+          return "white"
+        }
+      } else {
+        return "red"
       }
     },
-    goModifier (index, utilisateur) {
+    goModifier ( utilisateur) {
+      let name = utilisateur.name;
+      if (name === "") {
+        name = "undefined user";
+      }
       let utilisateurString = JSON.stringify(utilisateur);
-      this.$router.push({name: 'Modifier', params: { id: utilisateur.id, utilisateur: utilisateurString}})
-    }
-  }
+      this.$router.push({name: 'Modifier', params: { id: name, utilisateur: utilisateurString}})
+    },
+  },
 }
 </script>
 
@@ -116,6 +125,10 @@ export default {
   width: 80%;
   max-width: 500px;
 }
+
+.red {
+  background-color: #aa6b6f;
+  }
 
 .desktop {
   display: none;
@@ -159,6 +172,10 @@ export default {
   }
   .green {
     background-color: #79A6AF;
+  }
+
+  .red {
+  background-color: #aa6b6f;
   }
 
   input {

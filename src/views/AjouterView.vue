@@ -93,6 +93,10 @@ h3 {
   margin-bottom: 1rem;
 }
 
+#ajouter {
+  max-width: 360px;
+}
+
 textarea {
   height: 5rem;
   min-width: 340px;

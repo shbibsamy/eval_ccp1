@@ -92,7 +92,7 @@ export default {
 
 <style scoped>
 .title-box {
-  background-color: #1D585E;
+  background-color: #2c3e50;
   padding: 1rem;
   border-radius: 1rem;
   width: 70%;
@@ -102,7 +102,6 @@ export default {
 
 h2 {
   color: #F6F6F6;
-  background-color: #1D585E;
   margin: auto;
   border-radius: 0;
   margin: auto;
@@ -146,4 +145,9 @@ input[type=text] {
   color: #F6F6F6;
   padding: 0.5rem;
 }
+
+#modifier {
+  max-width: 360px;
+}
+
 </style>
