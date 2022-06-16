@@ -38,6 +38,7 @@ input[type=button]{
   font-weight: bold;
   text-transform: uppercase;
   width: 50%;
+  min-width: 150px;
   margin: auto;
   margin-top: 5px;
   margin-bottom: 5px;

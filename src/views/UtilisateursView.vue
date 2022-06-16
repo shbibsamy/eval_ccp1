@@ -86,12 +86,35 @@ export default {
       this.showModal = true;
     },
     colour(utilisateur, index) {
-      if (utilisateur.name !=="") {
+      let emptyData = false;
+      // check if ever empty; if empty = red
+      for (const value of Object.values(utilisateur)){
+        if (typeof value === "string") {
+          if (value == "") {
+            emptyData = true;
+          }
+        } else {
+          if (value ==="address" ) {
+            for (const addressValues of Object.values(value)) {
+              if (addressValues == "") {
+              emptyData = true;
+              }
+            }
+          } else if (value === "company)") {
+            for (const companyValues of Object.values(value)) {
+              if (companyValues == "") {
+              emptyData = true;
+              }
+            }
+          }
+        }
+      }
+      if (emptyData === false ) {
         if (index %2 === 0) {
-        return "green"
+        return "white"
         }
         else {
-          return "white"
+          return "green"
         }
       } else {
         return "red"
@@ -119,11 +142,22 @@ export default {
   display: flex;
   flex-direction: column;
   border: 4px solid #1D585E;
+  padding: 1rem;
   margin: auto;
   margin-top: 5%;
   margin-bottom: 5%;
   width: 80%;
   max-width: 500px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+.green {
+  background-color: #79A6AF;
 }
 
 .red {

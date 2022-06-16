@@ -50,7 +50,6 @@ export default {
         }
         const entriesFromInput = new Map(contentFromInput);
         companyObject = Object.fromEntries(entriesFromInput);
-        console.log(companyObject)
         this.formData[element.id] = companyObject;
         // create object from address text area
       } else if (attribute === "address") {
@@ -61,7 +60,6 @@ export default {
         }
         const entriesFromInput = new Map(contentFromInput);
         addressObject = Object.fromEntries(entriesFromInput);
-        console.log(addressObject)
         this.formData[element.id] = addressObject;
       } else if (attribute !== "ajouter"){
         this.formData[element.id] = element.value;
