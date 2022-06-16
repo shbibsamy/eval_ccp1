@@ -94,17 +94,10 @@ export default {
             emptyData = true;
           }
         } else {
-          if (value ==="address" ) {
-            for (const addressValues of Object.values(value)) {
-              if (addressValues == "") {
+          for (const objectValues of Object.values(value)) {
+            if (objectValues.trim().length === 0) {
+              console.log(objectValues)
               emptyData = true;
-              }
-            }
-          } else if (value === "company)") {
-            for (const companyValues of Object.values(value)) {
-              if (companyValues == "") {
-              emptyData = true;
-              }
             }
           }
         }
@@ -112,8 +105,7 @@ export default {
       if (emptyData === false ) {
         if (index %2 === 0) {
         return "white"
-        }
-        else {
+        } else {
           return "green"
         }
       } else {
