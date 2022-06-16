@@ -39,30 +39,18 @@ export default {
     this.formData.id = this.$store.state.idCounter+1;
     for(const element of formElements) {
       let attribute = element.getAttribute("id");
-      let companyObject;
-      let addressObject;
-      // Create object from company text area
-      if (attribute === "company") {
-        let companyValue = element.value.replace(/[\n]/gm, ',');
-        let contentFromInput = companyValue.split(",");
+      let currentObject;
+      // Create object from textareas
+      if (attribute === "company" || attribute === "address") {
+        let currentValue = element.value.replace(/[\n]/gm, ',');
+        let contentFromInput = currentValue.split(",");
         for (let index = 0; index < contentFromInput.length; index++) {
-          contentFromInput[index] = contentFromInput[index].split(":");
+          contentFromInput[index] = contentFromInput[index].split(": ");
         }
         const entriesFromInput = new Map(contentFromInput);
-        companyObject = Object.fromEntries(entriesFromInput);
-        console.log(companyObject)
-        this.formData[element.id] = companyObject;
+        currentObject = Object.fromEntries(entriesFromInput);
+        this.formData[element.id] = currentObject;
         // create object from address text area
-      } else if (attribute === "address") {
-        let addressValue = element.value.replace(/[\n]/gm, ',');
-        let contentFromInput = addressValue.split(",");
-        for (let index = 0; index < contentFromInput.length; index++) {
-          contentFromInput[index] = contentFromInput[index].split(":");
-        }
-        const entriesFromInput = new Map(contentFromInput);
-        addressObject = Object.fromEntries(entriesFromInput);
-        console.log(addressObject)
-        this.formData[element.id] = addressObject;
       } else if (attribute !== "ajouter"){
         this.formData[element.id] = element.value;
       }
@@ -78,6 +66,29 @@ export default {
     companyText.value = "name: "+'\r\n'+"catchPhrase: "+'\r\n'+"bs: ";
   }
 }
+
+
+
+// if (attribute === "company") {
+//         let companyValue = element.value.replace(/[\n]/gm, ',');
+//         let contentFromInput = companyValue.split(",");
+//         for (let index = 0; index < contentFromInput.length; index++) {
+//           contentFromInput[index] = contentFromInput[index].split(":");
+//         }
+//         const entriesFromInput = new Map(contentFromInput);
+//         companyObject = Object.fromEntries(entriesFromInput);
+//         this.formData[element.id] = companyObject;
+//         // create object from address text area
+//       } else if (attribute === "address") {
+//         let addressValue = element.value.replace(/[\n]/gm, ',');
+//         let contentFromInput = addressValue.split(",");
+//         for (let index = 0; index < contentFromInput.length; index++) {
+//           contentFromInput[index] = contentFromInput[index].split(":");
+//         }
+//         const entriesFromInput = new Map(contentFromInput);
+//         addressObject = Object.fromEntries(entriesFromInput);
+//         this.formData[element.id] = addressObject;
+
 </script>
 
 <style scoped>

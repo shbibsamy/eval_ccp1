@@ -37,11 +37,12 @@ h2   {
 input[type=button]{
   font-weight: bold;
   text-transform: uppercase;
-  width: 50%;
+  width: 45%;
+  min-width: 120px;
   margin: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 0.7rem;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-radius: 0.8rem;
   background-color: #2c3e50;
   color: #F6F6F6;
   padding: 0.5rem;
@@ -49,6 +50,7 @@ input[type=button]{
 
 input[type=button]:hover{
   background-color: #646e78;
+  box-shadow: black 0px 4px 4px;
 }
 
 input[type=button]:target {
@@ -91,11 +93,16 @@ nav a {
   color: #F6F6F6;
   background-color: #2c3e50;
   padding: 1vw;
-  border-radius: 0.7rem;
+  border-radius: 0.8rem;
   width: 25vw;
   height: 5vh;
   font-size: 2.5vw;
   box-shadow: 4px 4px 4px darkslategrey;
+}
+
+nav a:hover {
+  box-shadow: black  4px 4px 4px;
+
 }
 
 nav a.router-link-exact-active {
