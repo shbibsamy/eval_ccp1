@@ -23,8 +23,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
+import createObjectFromTextarea from '@/mixins/createObjectFromTextarea';
 export default {
   name: 'AjouterView',
   data: function() {
@@ -33,6 +32,7 @@ export default {
       data: this.$store.state.database,
     }
   },
+  mixins: [createObjectFromTextarea],
   methods: {
   ajouterUtilisateur(){
     let formElements = document.getElementById("new_utilisateur").elements;
@@ -42,15 +42,23 @@ export default {
       let currentObject;
       // Create object from textareas
       if (attribute === "company" || attribute === "address") {
-        let currentValue = element.value.replace(/[\n]/gm, ',');
-        let contentFromInput = currentValue.split(",");
-        for (let index = 0; index < contentFromInput.length; index++) {
-          contentFromInput[index] = contentFromInput[index].split(": ");
-        }
-        const entriesFromInput = new Map(contentFromInput);
-        currentObject = Object.fromEntries(entriesFromInput);
-        this.formData[element.id] = currentObject;
-        // create object from address text area
+        this.createObjectFromTextarea(element)
+        
+        // let currentValue = element.value.replace(/[\n]/gm, ',');
+        // let contentFromInput = currentValue.split(",");
+        // console.log(contentFromInput);
+        // contentFromInput.forEach(value => {
+        //   value = value.split(": ");
+        // })
+        // for (let value of contentFromInput) {
+        //   value = value.split(": ");
+        // }
+        // for (let index = 0; index < contentFromInput.length; index++) {
+        //   contentFromInput[index] = contentFromInput[index].split(": ");
+        // }
+        // const entriesFromInput = new Map(contentFromInput);
+        // currentObject = Object.fromEntries(entriesFromInput);
+        // this.formData[element.id] = currentObject;
       } else if (attribute !== "ajouter"){
         this.formData[element.id] = element.value;
       }

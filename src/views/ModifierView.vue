@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import createObjectFromTextarea from '@/mixins/createObjectFromTextarea';
+
 export default {
   name: 'ModifierView',
   components: {
@@ -41,33 +43,15 @@ export default {
       type: String
     },
   },
+  mixins: [createObjectFromTextarea],
   methods: {
   modifierUtilisateur(){
     let formElements = document.getElementById("modifier_utilisateur").elements;
     for(const element of formElements) {
       let attribute = element.getAttribute("id");
-      let companyObject;
-      let addressObject;
-      // Create object from company text area
-      if (attribute === "company") {
-        let companyValue = element.value.replace(/[\n]/gm, ',');
-        let contentFromInput = companyValue.split(",");
-        for (let index = 0; index < contentFromInput.length; index++) {
-          contentFromInput[index] = contentFromInput[index].split(":");
-        }
-        const entriesFromInput = new Map(contentFromInput);
-        companyObject = Object.fromEntries(entriesFromInput);
-        this.formData[element.id] = companyObject;
-        // create object from address text area
-      } else if (attribute === "address") {
-        let addressValue = element.value.replace(/[\n]/gm, ',');
-        let contentFromInput = addressValue.split(",");
-        for (let index = 0; index < contentFromInput.length; index++) {
-          contentFromInput[index] = contentFromInput[index].split(":");
-        }
-        const entriesFromInput = new Map(contentFromInput);
-        addressObject = Object.fromEntries(entriesFromInput);
-        this.formData[element.id] = addressObject;
+      // Create object from textareas
+      if (attribute === "company" || attribute === "address") {
+        this.createObjectFromTextarea(element)
       } else if (attribute !== "modifier"){
         this.formData[element.id] = element.value;
       }
