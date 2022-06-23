@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <img alt="Vue logo" src="@/assets/img/logo-Id-Formation.png">
+    <img alt="Logo ID Formation" src="@/assets/img/logo-Id-Formation.png">
     <nav>
       <router-link to="/">Accueil</router-link>
       <router-link to="/Utilisateurs">Utilisateurs</router-link>
